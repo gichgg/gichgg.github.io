@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalentPulse · Predictive People Analytics</title>
+  <meta name="description" content="Stop reporting on the past. TalentPulse converts your HR data into predictive intelligence — so you know which departments are at risk before they cost you your best people." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:           #F8F8F6;
+      --surface:      #FFFFFF;
+      --surface-2:    #F2F1EE;
+      --surface-3:    #E8E7E3;
+      --border:       rgba(0,0,0,0.08);
+      --border-md:    rgba(0,0,0,0.14);
+      --text:         #1A1A18;
+      --text-2:       #5A5A56;
+      --text-3:       #909089;
+      --accent:       #0F6E56;
+      --accent-dark:  #085041;
+      --accent-bg:    #E1F5EE;
+      --accent-light: #9FE1CB;
+      --danger:       #D85A30;
+      --danger-bg:    #FAECE7;
+      --purple:       #534AB7;
+      --purple-bg:    #EEEDFE;
+      --blue:         #185FA5;
+      --blue-bg:      #E6F1FB;
+      --amber:        #BA7517;
+      --amber-bg:     #FAEEDA;
+      --radius:       14px;
+      --radius-sm:    8px;
+      --radius-lg:    20px;
+      --nav-h:        60px;
+      --t:            0.2s ease;
+      --max:          1100px;
+    }
+    [data-theme="dark"] {
+      --bg:           #111110;
+      --surface:      #1C1C1A;
+      --surface-2:    #242422;
+      --surface-3:    #2E2E2B;
+      --border:       rgba(255,255,255,0.07);
+      --border-md:    rgba(255,255,255,0.13);
+      --text:         #EEEEE8;
+      --text-2:       #A8A8A0;
+      --text-3:       #606058;
+      --accent:       #1D9E75;
+      --accent-dark:  #9FE1CB;
+      --accent-bg:    #04342C;
+      --accent-light: #085041;
+      --danger:       #F0997B;
+      --danger-bg:    #4A1B0C;
+      --purple:       #AFA9EC;
+      --purple-bg:    #26215C;
+      --blue:         #85B7EB;
+      --blue-bg:      #042C53;
+      --amber:        #EF9F27;
+      --amber-bg:     #412402;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; z-index: 200;
+      transition: background var(--t), border-color var(--t);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+    .logo-mark { width: 28px; height: 28px; background: var(--accent); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+    .logo-mark svg { width: 16px; height: 16px; color: #fff; }
+    .nav-back { font-size: 13px; color: var(--text-2); display: flex; align-items: center; gap: 6px; transition: color var(--t); }
+    .nav-back:hover { color: var(--text); }
+    .nav-back svg { width: 14px; height: 14px; }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .theme-toggle { width: 34px; height: 34px; border-radius: var(--radius-sm); border: 1px solid var(--border-md); background: var(--surface-2); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--t); color: var(--text-2); }
+    .theme-toggle:hover { background: var(--surface-3); color: var(--text); }
+    .theme-toggle svg { width: 15px; height: 15px; }
+    .icon-sun { display: none; } .icon-moon { display: block; }
+    [data-theme="dark"] .icon-sun { display: block; } [data-theme="dark"] .icon-moon { display: none; }
+    .btn-nav { padding: 8px 16px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; background: var(--accent); color: #fff; cursor: pointer; border: none; transition: opacity var(--t); }
+    .btn-nav:hover { opacity: 0.85; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--accent); background: var(--accent-bg); padding: 5px 12px; border-radius: 20px; margin-bottom: 1.25rem; }
+    .eyebrow::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .section-title { font-size: clamp(1.6rem, 3.5vw, 2.25rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1.15; color: var(--text); margin-bottom: 1rem; }
+    .section-sub { font-size: 16px; color: var(--text-2); line-height: 1.75; max-width: 560px; }
+    .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 4px; }
+    .hero { padding-top: calc(var(--nav-h) + 4.5rem); padding-bottom: 5rem; background: var(--bg); }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+    @media (max-width: 800px) { .hero-inner { grid-template-columns: 1fr; } }
+    .hero-left h1 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin-bottom: 1.1rem; }
+    .hero-left h1 em { font-style: normal; color: var(--accent); }
+    .hero-left p { font-size: 16px; color: var(--text-2); line-height: 1.75; max-width: 480px; margin-bottom: 2rem; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 7px; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; background: var(--accent); color: #fff; border: none; cursor: pointer; transition: opacity var(--t); }
+    .btn-primary:hover { opacity: 0.87; }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 7px; padding: 12px 24px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; background: var(--surface); color: var(--text); border: 1px solid var(--border-md); cursor: pointer; transition: background var(--t); }
+    .btn-secondary:hover { background: var(--surface-2); }
+    .proof-stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .proof-stat { }
+    .proof-stat .val { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: var(--text); line-height: 1; }
+    .proof-stat .val span { color: var(--accent); }
+    .proof-stat .lbl { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+    .dashboard-mockup { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.05); }
+    .db-header { background: var(--surface-2); padding: 10px 14px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
+    .db-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .db-title { font-size: 12px; font-weight: 500; color: var(--text-2); margin-left: 4px; }
+    .db-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .db-alert { background: var(--danger-bg); border: 1px solid rgba(216,90,48,0.25); border-radius: var(--radius-sm); padding: 10px 12px; display: flex; gap: 10px; align-items: flex-start; }
+    .alert-icon { width: 18px; height: 18px; border-radius: 50%; background: var(--danger); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .alert-icon svg { width: 10px; height: 10px; color: #fff; }
+    .alert-text { font-size: 12px; color: var(--danger); font-weight: 500; line-height: 1.45; }
+    .alert-text strong { font-weight: 700; display: block; margin-bottom: 2px; font-size: 11.5px; }
+    .db-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .db-metric { background: var(--surface-2); border-radius: var(--radius-sm); padding: 10px 10px 8px; }
+    .db-metric .m-val { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.03em; color: var(--text); line-height: 1; }
+    .db-metric .m-lbl { font-size: 10.5px; color: var(--text-3); margin-top: 3px; }
+    .db-metric .m-delta { font-size: 10.5px; font-weight: 600; margin-top: 4px; }
+    .delta-up { color: var(--danger); }
+    .delta-dn { color: var(--accent); }
+    .db-bar-section { }
+    .db-bar-title { font-size: 11px; font-weight: 600; color: var(--text-2); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .db-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .db-bar-label { font-size: 11px; color: var(--text-2); width: 72px; flex-shrink: 0; }
+    .db-bar-track { flex: 1; height: 6px; background: var(--surface-3); border-radius: 3px; overflow: hidden; }
+    .db-bar-fill { height: 100%; border-radius: 3px; }
+    .db-bar-pct { font-size: 10.5px; color: var(--text-3); width: 28px; text-align: right; flex-shrink: 0; }
+    .db-predict { background: var(--accent-bg); border-radius: var(--radius-sm); padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; }
+    .db-predict-label { font-size: 11.5px; color: var(--accent-dark); font-weight: 500; }
+    .db-predict-val { font-size: 13px; font-weight: 700; color: var(--accent); }
+    .problem-section { padding: 5rem 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
+    @media (max-width: 720px) { .problem-grid { grid-template-columns: 1fr; } }
+    .pain-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.5rem 1.75rem; transition: border-color var(--t); }
+    .pain-card:hover { border-color: var(--border-md); }
+    .pain-icon { width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .pain-card h3 { font-size: 14.5px; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+    .pain-card p { font-size: 13.5px; color: var(--text-2); line-height: 1.65; }
+    .problem-stat { margin-top: 2.5rem; background: var(--surface-2); border-radius: var(--radius); padding: 1.75rem 2rem; display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .problem-stat .big-num { font-size: 3rem; font-weight: 700; letter-spacing: -0.05em; color: var(--accent); line-height: 1; flex-shrink: 0; }
+    .problem-stat .big-text { font-size: 15px; color: var(--text-2); line-height: 1.65; max-width: 520px; }
+    .problem-stat .big-text cite { font-style: normal; font-size: 12px; color: var(--text-3); display: block; margin-top: 4px; }
+    .ba-section { padding: 5rem 0; }
+    .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+    @media (max-width: 640px) { .ba-grid { grid-template-columns: 1fr; } }
+    .ba-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .ba-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .ba-header h3 { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+    .ba-badge { font-size: 10.5px; font-weight: 700; padding: 3px 9px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .ba-badge-before { background: var(--danger-bg); color: var(--danger); }
+    .ba-badge-after { background: var(--accent-bg); color: var(--accent); }
+    .ba-body { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 10px; }
+    .ba-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: var(--text-2); line-height: 1.5; }
+    .ba-item svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
+    .icon-cross { color: var(--danger); }
+    .icon-check { color: var(--accent); }
+    .big3-section { padding: 5rem 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .big3-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
+    @media (max-width: 720px) { .big3-grid { grid-template-columns: 1fr; } }
+    .cap-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; transition: border-color var(--t), transform var(--t); }
+    .cap-card:hover { border-color: var(--border-md); transform: translateY(-2px); }
+    .cap-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-3); margin-bottom: 1rem; }
+    .cap-icon { width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.1rem; }
+    .cap-icon svg { width: 22px; height: 22px; }
+    .cap-card h3 { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.6rem; }
+    .cap-card p { font-size: 13.5px; color: var(--text-2); line-height: 1.65; margin-bottom: 1rem; }
+    .cap-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    /* INTEGRATION */
+    .integration-section { padding: 5rem 0; }
+    .integration-hub { margin-top: 2.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; }
+    .hub-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center; }
+    @media (max-width: 700px) { .hub-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+    .hub-sources { display: flex; flex-direction: column; gap: 10px; }
+    .hub-source { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 14px; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--text-2); transition: border-color var(--t); }
+    .hub-source:hover { border-color: var(--border-md); }
+    .hub-source-icon { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hub-source-icon svg { width: 14px; height: 14px; }
+    .hub-engine { text-align: center; }
+    .engine-circle { width: 120px; height: 120px; border-radius: 50%; background: var(--accent); display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 12px; box-shadow: 0 0 0 8px var(--accent-bg); }
+    .engine-circle svg { width: 32px; height: 32px; color: #fff; margin-bottom: 4px; }
+    .engine-circle span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: rgba(255,255,255,0.85); }
+    .engine-label { font-size: 12.5px; color: var(--text-2); text-align: center; max-width: 130px; margin: 0 auto; line-height: 1.45; }
+    .hub-outputs { display: flex; flex-direction: column; gap: 10px; }
+    .hub-output { background: var(--accent-bg); border: 1px solid rgba(15,110,86,0.15); border-radius: var(--radius-sm); padding: 10px 14px; display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--accent-dark); }
+    .hub-output svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
+    .integration-note { margin-top: 1.5rem; text-align: center; font-size: 13px; color: var(--text-3); }
+    .integration-note strong { color: var(--text-2); font-weight: 500; }
+
+    /* SOCIAL PROOF */
+    .proof-section { padding: 5rem 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .logos-row { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0; }
+    .logo-placeholder { background: var(--surface-2); border: 1px dashed var(--border-md); border-radius: var(--radius-sm); width: 100px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--text-3); font-weight: 500; }
+    .featured-row { text-align: center; margin-bottom: 2.5rem; }
+    .featured-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-3); margin-bottom: 1rem; }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 640px) { .testimonials-grid { grid-template-columns: 1fr; } }
+    .testimonial-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; }
+    .quote-mark { font-size: 3rem; line-height: 0.7; color: var(--accent); margin-bottom: 1rem; font-family: Georgia, serif; }
+    .testimonial-card blockquote { font-size: 14.5px; color: var(--text-2); line-height: 1.75; font-style: italic; margin-bottom: 1.25rem; }
+    .testimonial-author { display: flex; align-items: center; gap: 10px; }
+    .author-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent-bg); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--accent); flex-shrink: 0; }
+    .author-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .author-role { font-size: 12px; color: var(--text-3); }
+
+    /* FINAL CTA */
+    .final-cta { padding: 5.5rem 0; }
+    .cta-box { background: var(--accent); border-radius: var(--radius-lg); padding: 3.5rem; text-align: center; position: relative; overflow: hidden; }
+    .cta-box::before { content: ''; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.06); }
+    .cta-box::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+    .cta-box h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.03em; color: #fff; line-height: 1.2; margin-bottom: 1rem; position: relative; z-index: 1; }
+    .cta-box p { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.7; max-width: 480px; margin: 0 auto 2rem; position: relative; z-index: 1; }
+    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+    .btn-white { display: inline-flex; align-items: center; gap: 7px; padding: 13px 26px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; background: #fff; color: var(--accent); border: none; cursor: pointer; transition: opacity var(--t); }
+    .btn-white:hover { opacity: 0.92; }
+    .btn-outline-white { display: inline-flex; align-items: center; gap: 7px; padding: 13px 26px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.45); cursor: pointer; transition: background var(--t); }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+    footer { text-align: center; padding: 2rem; font-size: 12.5px; color: var(--text-3); border-top: 1px solid var(--border); }
+    footer a { color: var(--text-2); transition: color var(--t); }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      .nav-back span { display: none; }
+      .proof-stats { gap: 1.25rem; }
+      .hub-grid { text-align: center; }
+      .engine-circle { margin-bottom: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="logo-mark">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>
+    </div>
+    TalentPulse
+  </div>
+  <a href="index.html" class="nav-back">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg>
+    <span>Back to portfolio</span>
+  </a>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25M12 18.75V21m8.25-9H18.75M5.25 12H3m15.364-6.364-1.591 1.591M6.227 17.773l-1.59 1.59M18.364 18.364l-1.591-1.591M6.227 6.227 4.636 4.636M12 8.25a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5z"/></svg>
+      <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998z"/></svg>
+    </button>
+    <button class="btn-nav">Book a Demo</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="eyebrow">AI-Powered People Analytics</div>
+        <h1>Stop Reporting on the Past.<br><em>Start Predicting</em> What's Next.</h1>
+        <p>TalentPulse converts your HR data into predictive intelligence — so you know which departments are at risk before they cost you your best people.</p>
+        <div class="cta-row">
+          <button class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+            Book a Demo
+          </button>
+          <button class="btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+            See Your Insights
+          </button>
+        </div>
+        <div class="proof-stats">
+          <div class="proof-stat">
+            <div class="val"><span>87%</span></div>
+            <div class="lbl">prediction accuracy</div>
+          </div>
+          <div class="proof-stat">
+            <div class="val"><span>3.2×</span></div>
+            <div class="lbl">faster decisions</div>
+          </div>
+          <div class="proof-stat">
+            <div class="val"><span>40%</span></div>
+            <div class="lbl">fewer regrettable exits</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Dashboard Mockup -->
+      <div class="dashboard-mockup">
+        <div class="db-header">
+          <div class="db-dot" style="background:#FF5F57"></div>
+          <div class="db-dot" style="background:#FFBD2E"></div>
+          <div class="db-dot" style="background:#28C840"></div>
+          <div class="db-title">TalentPulse · Live Dashboard</div>
+        </div>
+        <div class="db-body">
+          <div class="db-alert">
+            <div class="alert-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/></svg>
+            </div>
+            <div class="alert-text">
+              <strong>AI Alert · 3 departments at attrition risk</strong>
+              Engineering, Customer Success &amp; Finance show elevated flight risk signals for Q3. Recommended action available.
+            </div>
+          </div>
+          <div class="db-metrics">
+            <div class="db-metric">
+              <div class="m-val">18.4%</div>
+              <div class="m-lbl">Turnover rate</div>
+              <div class="m-delta delta-up">↑ 2.1%</div>
+            </div>
+            <div class="db-metric">
+              <div class="m-val">71</div>
+              <div class="m-lbl">eNPS score</div>
+              <div class="m-delta delta-dn">↑ 4pts</div>
+            </div>
+            <div class="db-metric">
+              <div class="m-val">34d</div>
+              <div class="m-lbl">Time-to-hire</div>
+              <div class="m-delta delta-dn">↓ 6d</div>
+            </div>
+          </div>
+          <div class="db-bar-section">
+            <div class="db-bar-title">Flight risk by department</div>
+            <div class="db-bar-row">
+              <div class="db-bar-label">Engineering</div>
+              <div class="db-bar-track"><div class="db-bar-fill" style="width:78%;background:#D85A30"></div></div>
+              <div class="db-bar-pct">78%</div>
+            </div>
+            <div class="db-bar-row">
+              <div class="db-bar-label">Cust. Success</div>
+              <div class="db-bar-track"><div class="db-bar-fill" style="width:61%;background:#EF9F27"></div></div>
+              <div class="db-bar-pct">61%</div>
+            </div>
+            <div class="db-bar-row">
+              <div class="db-bar-label">Finance</div>
+              <div class="db-bar-track"><div class="db-bar-fill" style="width:54%;background:#EF9F27"></div></div>
+              <div class="db-bar-pct">54%</div>
+            </div>
+            <div class="db-bar-row">
+              <div class="db-bar-label">Marketing</div>
+              <div class="db-bar-track"><div class="db-bar-fill" style="width:22%;background:#1D9E75"></div></div>
+              <div class="db-bar-pct">22%</div>
+            </div>
+          </div>
+          <div class="db-predict">
+            <div class="db-predict-label">Predicted exits next 90 days</div>
+            <div class="db-predict-val">7–11 people · Act now</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="container">
+    <div class="eyebrow">The Problem</div>
+    <h2 class="section-title">Drowning in Data.<br>Starving for Insight.</h2>
+    <p class="section-sub">Most HR teams sit on mountains of people data — and still make decisions by gut feel, because the data never tells them what to do next.</p>
+
+    <div class="problem-grid">
+      <div class="pain-card">
+        <div class="pain-icon" style="background:var(--danger-bg);">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18" style="color:var(--danger)"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+        </div>
+        <h3>Backward-looking reports</h3>
+        <p>Your quarterly HR report tells you what happened three months ago. By the time you see the attrition spike, your best engineers are already interviewing elsewhere.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon" style="background:var(--amber-bg);">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18" style="color:var(--amber)"><path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0 1 12 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125"/></svg>
+        </div>
+        <h3>Spreadsheet fragmentation</h3>
+        <p>Engagement data lives in one place. Recruitment metrics in another. Performance reviews in a third. Nobody has a complete picture — and connecting the dots takes weeks, not minutes.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon" style="background:var(--purple-bg);">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18" style="color:var(--purple)"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"/></svg>
+        </div>
+        <h3>Decision paralysis</h3>
+        <p>When leadership asks "why is attrition up in Sales?", the honest answer is: "we're not sure yet." The data exists — but nobody has time to analyse it fast enough to act.</p>
+      </div>
+    </div>
+
+    <div class="problem-stat">
+      <div class="big-num">73%</div>
+      <div class="big-text">
+        of HR leaders say they have more data than they can meaningfully act on — yet fewer than 1 in 5 can predict a talent crisis more than 30 days in advance.
+        <cite>— Gartner HR Survey, 2024</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="ba-section">
+  <div class="container">
+    <div class="eyebrow">The Shift</div>
+    <h2 class="section-title">Your reality today — and what it looks like with TalentPulse.</h2>
+    <div class="ba-grid">
+      <div class="ba-card">
+        <div class="ba-header">
+          <span class="ba-badge ba-badge-before">Before</span>
+          <h3>The messy reality</h3>
+        </div>
+        <div class="ba-body">
+          <div class="ba-item">
+            <svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+            Static quarterly HR reports sitting in someone's inbox, unread
+          </div>
+          <div class="ba-item">
+            <svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+            Seven spreadsheets across four different systems that nobody fully trusts
+          </div>
+          <div class="ba-item">
+            <svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+            Finding out about an attrition spike after your third resignation this month
+          </div>
+          <div class="ba-item">
+            <svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+            Presenting gut-feel recommendations to a CEO who wants data
+          </div>
+          <div class="ba-item">
+            <svg class="icon-cross" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>
+            Weeks of analyst time to answer a question the CEO needed answered yesterday
+          </div>
+        </div>
+      </div>
+      <div class="ba-card">
+        <div class="ba-header">
+          <span class="ba-badge ba-badge-after">After TalentPulse</span>
+          <h3>The new standard</h3>
+        </div>
+        <div class="ba-body">
+          <div class="ba-item">
+            <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            One mobile-friendly dashboard the CEO can check in 60 seconds
+          </div>
+          <div class="ba-item">
+            <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            Every data source unified — surveys, HRIS, assessments, performance, ATS
+          </div>
+          <div class="ba-item">
+            <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            AI flags which departments face attrition risk next month — with a recommended response
+          </div>
+          <div class="ba-item">
+            <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            Data-backed business cases that land in boardrooms and get budget approved
+          </div>
+          <div class="ba-item">
+            <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/></svg>
+            Answers in seconds, not weeks — so leadership makes decisions with confidence
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE BIG THREE -->
+<section class="big3-section">
+  <div class="container">
+    <div class="eyebrow">Capabilities</div>
+    <h2 class="section-title">Three things TalentPulse does that spreadsheets can't.</h2>
+    <p class="section-sub">Each capability is built for one purpose: turning your existing people data into a decision your leadership team can act on today.</p>
+
+    <div class="big3-grid">
+      <div class="cap-card">
+        <div class="cap-num">01</div>
+        <div class="cap-icon" style="background:var(--blue-bg);">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--blue)"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"/></svg>
+        </div>
+        <h3>Automated Dashboards</h3>
+        <p>Real-time visibility into turnover rates, diversity metrics, engagement scores, and performance trends — refreshed automatically, presented in plain language.</p>
+        <div class="cap-tags">
+          <span class="tag" style="background:var(--blue-bg);color:var(--blue)">Power BI</span>
+          <span class="tag" style="background:var(--accent-bg);color:var(--accent)">Real-time</span>
+          <span class="tag" style="background:var(--surface-3);color:var(--text-2)">Mobile-ready</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">02</div>
+        <div class="cap-icon" style="background:var(--purple-bg);">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--purple)"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21a48.309 48.309 0 0 1-8.135-.687c-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+        </div>
+        <h3>Predictive AI</h3>
+        <p>Identify flight risk and high-potential leaders before they surface through resignation letters or missed promotions. 87% accuracy on 90-day attrition predictions.</p>
+        <div class="cap-tags">
+          <span class="tag" style="background:var(--purple-bg);color:var(--purple)">Flight risk</span>
+          <span class="tag" style="background:var(--amber-bg);color:var(--amber)">High potential</span>
+          <span class="tag" style="background:var(--danger-bg);color:var(--danger)">Early warning</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-num">03</div>
+        <div class="cap-icon" style="background:var(--accent-bg);">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--accent)"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z"/></svg>
+        </div>
+        <h3>Actionable Blueprints</h3>
+        <p>Every metric comes with a recommended action and predicted impact — specific management steps your HR business partners can execute immediately, not just data to stare at.</p>
+        <div class="cap-tags">
+          <span class="tag" style="background:var(--accent-bg);color:var(--accent)">Prescriptive</span>
+          <span class="tag" style="background:var(--blue-bg);color:var(--blue)">ROI-tracked</span>
+          <span class="tag" style="background:var(--surface-3);color:var(--text-2)">Board-ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATION HUB -->
+<section class="integration-section">
+  <div class="container">
+    <div class="eyebrow">How It Works</div>
+    <h2 class="section-title">All your people data. One intelligent view.</h2>
+    <p class="section-sub">TalentPulse connects to your existing systems — zero migration, zero disruption — and builds a 360-degree picture of your workforce in days, not months.</p>
+
+    <div class="integration-hub">
+      <div class="hub-grid">
+        <div class="hub-sources">
+          <div class="hub-source">
+            <div class="hub-source-icon" style="background:var(--blue-bg);">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--blue)"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z"/></svg>
+            </div>
+            Engagement Surveys
+          </div>
+          <div class="hub-source">
+            <div class="hub-source-icon" style="background:var(--purple-bg);">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--purple)"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21a48.309 48.309 0 0 1-8.135-.687c-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+            </div>
+            Psychometric Assessments
+          </div>
+          <div class="hub-source">
+            <div class="hub-source-icon" style="background:var(--accent-bg);">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--accent)"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
+            </div>
+            HRIS &amp; Core HR
+          </div>
+          <div class="hub-source">
+            <div class="hub-source-icon" style="background:var(--amber-bg);">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--amber)"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
+            </div>
+            Recruitment &amp; ATS
+          </div>
+          <div class="hub-source">
+            <div class="hub-source-icon" style="background:var(--surface-3);">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="color:var(--text-2)"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/></svg>
+            </div>
+            Performance Data
+          </div>
+        </div>
+
+        <div class="hub-engine">
+          <div class="engine-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/></svg>
+            <span>AI Engine</span>
+          </div>
+          <div class="engine-label">Unifies all data sources into one predictive model</div>
+        </div>
+
+        <div class="hub-outputs">
+          <div class="hub-output">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"/></svg>
+            Live Dashboards
+          </div>
+          <div class="hub-output">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"/></svg>
+            Attrition Alerts
+          </div>
+          <div class="hub-output">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg>
+            Predictive Signals
+          </div>
+          <div class="hub-output">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25Z"/></svg>
+            Action Blueprints
+          </div>
+          <div class="hub-output">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5m.75-9 3-3 2.148 2.148A12.061 12.061 0 0 1 16.5 7.605"/></svg>
+            Board Reports
+          </div>
+        </div>
+      </div>
+      <div class="integration-note">
+        <strong>Zero migration. Zero disruption.</strong> TalentPulse connects to your existing stack — no rip-and-replace required. Average onboarding: 5 days.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="proof-section">
+  <div class="container">
+    <div class="eyebrow">Social Proof</div>
+    <h2 class="section-title">Trusted by forward-thinking HR leaders.</h2>
+
+    <div class="featured-row">
+      <div class="featured-label">Client organisations</div>
+      <div class="logos-row">
+        <div class="logo-placeholder">Client logo</div>
+        <div class="logo-placeholder">Client logo</div>
+        <div class="logo-placeholder">Client logo</div>
+        <div class="logo-placeholder">Client logo</div>
+        <div class="logo-placeholder">Client logo</div>
+      </div>
+    </div>
+
+    <div class="featured-row">
+      <div class="featured-label">As featured in</div>
+      <div class="logos-row">
+        <div class="logo-placeholder">Publication</div>
+        <div class="logo-placeholder">Publication</div>
+        <div class="logo-placeholder">Publication</div>
+      </div>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="quote-mark">"</div>
+        <blockquote>Before TalentPulse, our CHRO was presenting attrition data that was already three months old. Now she walks into the monthly ExCo with a predictive model that tells the CEO exactly which teams are at risk and what it will cost if we don't act. The shift in credibility has been remarkable.</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">CP</div>
+          <div>
+            <div class="author-name">Chief People Officer</div>
+            <div class="author-role">Pan-African Financial Services Group · 4,200 employees</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="quote-mark">"</div>
+        <blockquote>I've used every major HR analytics platform on the market. TalentPulse is the first one where a line manager actually opened the dashboard without being asked to. The recommendations are specific, the language is plain, and for the first time our managers feel like HR is giving them something useful rather than asking them to fill in another form.</blockquote>
+        <div class="testimonial-author">
+          <div class="author-avatar">HD</div>
+          <div>
+            <div class="author-name">HR Director</div>
+            <div class="author-role">East African Telecoms Business · 1,800 employees</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Every Month Without Predictive Insights<br>Is a Month Your Competitors Gain Ground.</h2>
+      <p>Your best people are making career decisions right now. TalentPulse tells you who, why, and what to do about it — before it's too late to act.</p>
+      <div class="cta-btns">
+        <button class="btn-white">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
+          Book Your Demo
+        </button>
+        <button class="btn-outline-white">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+          Download the ROI Guide
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>TalentPulse by <a href="index.html">Gich Gitau</a> · <a href="index.html">Back to portfolio</a></p>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  if (saved) html.setAttribute('data-theme', saved);
+  else if (window.matchMedia('(prefers-color-scheme: dark)').matches) html.setAttribute('data-theme', 'dark');
+  toggle.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+</script>
+</body>
+</html>
