@@ -155,6 +155,7 @@
     .acc-body p { padding-top: 0.75rem; }
     .acc-status { display: inline-block; margin-top: 0.5rem; font-size: 11px; font-weight: 500; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.07em; }
     @media (max-width: 600px) { .acc-tags { display: none; } }
+    .acc-body--grid { padding: 1rem 0 0; border-top: 1px solid var(--border); }
   </style>
 </head>
 <body>
@@ -187,105 +188,59 @@
     <div class="section-label">Work</div>
     <h2 class="section-title">Projects &amp; Dashboards</h2>
     <p class="section-desc">Interactive dashboards, analytics reports, and data models covering talent acquisition, workforce planning, engagement, and psychometric insights.</p>
-    <!-- Featured Projects Carousel -->
     <div class="carousel-wrap" id="carousel">
       <div class="carousel-track-outer">
         <div class="carousel-track" id="carouselTrack">
-
-          <!-- Slide 1: Talent-Report-Hogan -->
           <div class="carousel-slide">
             <div class="carousel-body">
               <div>
-                <div class="carousel-eyebrow">
-                  <span style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;"></span>
-                  Live · Talent Advisory
-                </div>
+                <div class="carousel-eyebrow"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;"></span>Live · Talent Advisory</div>
                 <div class="carousel-title">Talent Report — Hogan Alignment</div>
                 <div class="carousel-desc">Aligns Hogan assessment reports to a job description to generate customised insights and clear, actionable recommendations. Built with TypeScript and Gemini AI.</div>
               </div>
               <div class="carousel-footer">
-                <div class="carousel-tags">
-                  <span class="tag tag-purple">TypeScript</span>
-                  <span class="tag tag-blue">Hogan</span>
-                  <span class="tag tag-accent">Talent Advisory</span>
-                  <span class="tag" style="background:var(--surface-2);color:var(--text-2)">Gemini AI</span>
-                </div>
+                <div class="carousel-tags"><span class="tag tag-purple">TypeScript</span><span class="tag tag-blue">Hogan</span><span class="tag tag-accent">Talent Advisory</span><span class="tag" style="background:var(--surface-2);color:var(--text-2)">Gemini AI</span></div>
                 <a href="https://github.com/gichgg/Talent-Report-Hogan" target="_blank" rel="noopener" class="project-link">View on GitHub<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
               </div>
             </div>
             <div class="carousel-visual" style="background:linear-gradient(135deg,#085041 0%,#1D9E75 60%,#2F8DD0 100%);">
-              <div class="carousel-visual-inner">
-                <div class="carousel-visual-label">Hogan · JD Match</div>
-                <div class="carousel-visual-title">Assessment → Role Alignment</div>
-                <div class="carousel-visual-sub">Generates personalised debrief insights and development actions from Hogan profile data mapped against the JD.</div>
-              </div>
+              <div class="carousel-visual-inner"><div class="carousel-visual-label">Hogan · JD Match</div><div class="carousel-visual-title">Assessment → Role Alignment</div><div class="carousel-visual-sub">Generates personalised debrief insights and development actions from Hogan profile data mapped against the JD.</div></div>
             </div>
           </div>
-
-          <!-- Slide 2: FinSight-AI -->
           <div class="carousel-slide">
             <div class="carousel-body">
               <div>
-                <div class="carousel-eyebrow">
-                  <span style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;"></span>
-                  Live · Finance
-                </div>
+                <div class="carousel-eyebrow"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;"></span>Live · Finance</div>
                 <div class="carousel-title">FinSight AI — Expense Tracker</div>
                 <div class="carousel-desc">AI-powered expense tracker that categorises, analyses, and surfaces actionable insights from spending data. Built with TypeScript and Gemini AI on the Google AI Studio platform.</div>
               </div>
               <div class="carousel-footer">
-                <div class="carousel-tags">
-                  <span class="tag tag-purple">TypeScript</span>
-                  <span class="tag tag-blue">Finance</span>
-                  <span class="tag tag-accent">AI</span>
-                  <span class="tag" style="background:var(--surface-2);color:var(--text-2)">Gemini AI</span>
-                </div>
-                <a href="https://github.com/gichgg/FinSight-AI" target="_blank" rel="noopener" class="project-link">View on GitHub<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
+                <div class="carousel-tags"><span class="tag tag-purple">TypeScript</span><span class="tag tag-blue">Finance</span><span class="tag tag-accent">AI</span><span class="tag" style="background:var(--surface-2);color:var(--text-2)">Gemini AI</span></div>
+                <a href="https://github.com/gichgg/FinSight-AI" target="_blank" rel="noopener" class="project-link">View on GitHub<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
               </div>
             </div>
             <div class="carousel-visual" style="background:linear-gradient(135deg,#042C53 0%,#1A6EB5 60%,#378ADD 100%);">
-              <div class="carousel-visual-inner">
-                <div class="carousel-visual-label">FinSight · Spend Analysis</div>
-                <div class="carousel-visual-title">Expense Intelligence</div>
-                <div class="carousel-visual-sub">Tracks and categorises expenses, surfaces patterns, and generates AI-driven financial insights in real time.</div>
-              </div>
+              <div class="carousel-visual-inner"><div class="carousel-visual-label">FinSight · Spend Analysis</div><div class="carousel-visual-title">Expense Intelligence</div><div class="carousel-visual-sub">Tracks and categorises expenses, surfaces patterns, and generates AI-driven financial insights in real time.</div></div>
             </div>
           </div>
-
-          <!-- Slide 3: ETR-Receipt -->
           <div class="carousel-slide">
             <div class="carousel-body">
               <div>
-                <div class="carousel-eyebrow">
-                  <span style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;"></span>
-                  Live · Automation
-                </div>
+                <div class="carousel-eyebrow"><span style="width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block;flex-shrink:0;"></span>Live · Automation</div>
                 <div class="carousel-title">ETR Receipt — Receipts Vault</div>
                 <div class="carousel-desc">Scan, store, and organise ETR receipts with automated Notion logging. Built with TypeScript, Firebase, and Gemini AI for fast receipt capture and reconciliation workflows.</div>
               </div>
               <div class="carousel-footer">
-                <div class="carousel-tags">
-                  <span class="tag tag-purple">TypeScript</span>
-                  <span class="tag tag-blue">Firebase</span>
-                  <span class="tag tag-accent">Automation</span>
-                  <span class="tag" style="background:var(--surface-2);color:var(--text-2)">Notion</span>
-                </div>
+                <div class="carousel-tags"><span class="tag tag-purple">TypeScript</span><span class="tag tag-blue">Firebase</span><span class="tag tag-accent">Automation</span><span class="tag" style="background:var(--surface-2);color:var(--text-2)">Notion</span></div>
                 <a href="https://github.com/gichgg/ETR-Receipt" target="_blank" rel="noopener" class="project-link">View on GitHub<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg></a>
               </div>
             </div>
             <div class="carousel-visual" style="background:linear-gradient(135deg,#26215C 0%,#5E58C0 60%,#7F77DD 100%);">
-              <div class="carousel-visual-inner">
-                <div class="carousel-visual-label">ETR · Receipt Vault</div>
-                <div class="carousel-visual-title">Scan → Log → Reconcile</div>
-                <div class="carousel-visual-sub">Capture ETR receipts, auto-categorise with AI, and sync directly to your Notion expense database.</div>
-              </div>
+              <div class="carousel-visual-inner"><div class="carousel-visual-label">ETR · Receipt Vault</div><div class="carousel-visual-title">Scan → Log → Reconcile</div><div class="carousel-visual-sub">Capture ETR receipts, auto-categorise with AI, and sync directly to your Notion expense database.</div></div>
             </div>
           </div>
-
         </div>
       </div>
-
-      <!-- Controls -->
       <div class="carousel-controls">
         <div class="carousel-dots">
           <button class="carousel-dot active" data-idx="0" aria-label="Slide 1"></button>
@@ -293,12 +248,8 @@
           <button class="carousel-dot" data-idx="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-btns">
-          <button class="carousel-btn" id="carouselPrev" aria-label="Previous" disabled>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
-          </button>
-          <button class="carousel-btn" id="carouselNext" aria-label="Next">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
-          </button>
+          <button class="carousel-btn" id="carouselPrev" aria-label="Previous" disabled><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg></button>
+          <button class="carousel-btn" id="carouselNext" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg></button>
         </div>
       </div>
     </div>
@@ -306,104 +257,44 @@
     <!-- In Development -->
     <div class="dev-label">In Development</div>
     <div class="accordion">
-
       <details class="acc-item">
         <summary class="acc-header">
           <div class="acc-icon thumb-teal"></div>
-          <span class="acc-title">Workforce Attrition Dashboard</span>
+          <span class="acc-title">More Dashboards</span>
           <div class="acc-tags"><span class="tag tag-purple">Power BI</span><span class="tag tag-blue">HR Analytics</span><span class="tag tag-accent">Workforce Planning</span></div>
           <span class="acc-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg></span>
         </summary>
-        <div class="acc-body">
-          <p>Predictive attrition model tracking flight risk by department, tenure band, and engagement score — built in Power BI.</p>
-          <span class="acc-status">In development · Power BI</span>
+        <div class="acc-body acc-body--grid">
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-thumb thumb-teal"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg><span class="wip-badge">Coming soon</span></div>
+              <div class="project-body"><div class="project-title">Workforce Attrition Dashboard</div><div class="project-desc">Predictive attrition model tracking flight risk by department, tenure band, and engagement score — built in Power BI.</div><div class="project-tags"><span class="tag tag-purple">Power BI</span><span class="tag tag-blue">HR Analytics</span><span class="tag tag-accent">Workforce Planning</span></div></div>
+              <div class="project-footer"><span>In development</span></div>
+            </div>
+            <div class="project-card">
+              <div class="project-thumb thumb-blue"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg><span class="wip-badge">Coming soon</span></div>
+              <div class="project-body"><div class="project-title">Talent Acquisition Pipeline Tracker</div><div class="project-desc">End-to-end recruitment funnel metrics — time-to-hire, source effectiveness, offer acceptance rates, and diversity at each stage.</div><div class="project-tags"><span class="tag tag-purple">Power BI</span><span class="tag tag-blue">Recruitment</span><span class="tag tag-accent">DEI</span></div></div>
+              <div class="project-footer"><span>In development</span></div>
+            </div>
+            <div class="project-card">
+              <div class="project-thumb thumb-purple"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21a48.309 48.309 0 0 1-8.135-.687c-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg><span class="wip-badge">Coming soon</span></div>
+              <div class="project-body"><div class="project-title">Psychometric Assessment Analytics</div><div class="project-desc">Aggregated insights from psychometric assessments — competency profiles, team composition analysis, and role-fit benchmarking.</div><div class="project-tags"><span class="tag tag-purple">Python</span><span class="tag tag-blue">Psychometrics</span><span class="tag tag-accent">Talent Advisory</span></div></div>
+              <div class="project-footer"><span>In development</span></div>
+            </div>
+            <div class="project-card">
+              <div class="project-thumb thumb-amber"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"/></svg><span class="wip-badge">Coming soon</span></div>
+              <div class="project-body"><div class="project-title">Employee Engagement Heatmap</div><div class="project-desc">Pulse survey results visualised as department and location heatmaps — tracking sentiment trends, eNPS, and driver analysis over time.</div><div class="project-tags"><span class="tag tag-purple">Power BI</span><span class="tag tag-blue">Engagement</span><span class="tag tag-accent">eNPS</span></div></div>
+              <div class="project-footer"><span>In development</span></div>
+            </div>
+            <div class="project-card">
+              <div class="project-thumb thumb-coral"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/></svg><span class="wip-badge">Coming soon</span></div>
+              <div class="project-body"><div class="project-title">Workforce Planning Model</div><div class="project-desc">Headcount forecasting, skills gap mapping, and scenario modelling to support strategic workforce decisions across a 3-year horizon.</div><div class="project-tags"><span class="tag tag-purple">Excel</span><span class="tag tag-blue">Scenario Modelling</span><span class="tag tag-accent">Strategic HR</span></div></div>
+              <div class="project-footer"><span>In development</span></div>
+            </div>
+          </div>
         </div>
       </details>
-
-      <details class="acc-item">
-        <summary class="acc-header">
-          <div class="acc-icon thumb-blue"></div>
-          <span class="acc-title">Talent Acquisition Pipeline Tracker</span>
-          <div class="acc-tags"><span class="tag tag-purple">Power BI</span><span class="tag tag-blue">Recruitment</span><span class="tag tag-accent">DEI</span></div>
-          <span class="acc-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg></span>
-        </summary>
-        <div class="acc-body">
-          <p>End-to-end recruitment funnel metrics — time-to-hire, source effectiveness, offer acceptance rates, and diversity at each stage.</p>
-          <span class="acc-status">In development · Power BI</span>
-        </div>
-      </details>
-
-      <details class="acc-item">
-        <summary class="acc-header">
-          <div class="acc-icon thumb-purple"></div>
-          <span class="acc-title">Psychometric Assessment Analytics</span>
-          <div class="acc-tags"><span class="tag tag-purple">Python</span><span class="tag tag-blue">Psychometrics</span><span class="tag tag-accent">Talent Advisory</span></div>
-          <span class="acc-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg></span>
-        </summary>
-        <div class="acc-body">
-          <p>Aggregated insights from psychometric assessments — competency profiles, team composition analysis, and role-fit benchmarking.</p>
-          <span class="acc-status">In development · Report</span>
-        </div>
-      </details>
-
-      <details class="acc-item">
-        <summary class="acc-header">
-          <div class="acc-icon thumb-amber"></div>
-          <span class="acc-title">Employee Engagement Heatmap</span>
-          <div class="acc-tags"><span class="tag tag-purple">Power BI</span><span class="tag tag-blue">Engagement</span><span class="tag tag-accent">eNPS</span></div>
-          <span class="acc-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg></span>
-        </summary>
-        <div class="acc-body">
-          <p>Pulse survey results visualised as department and location heatmaps — tracking sentiment trends, eNPS, and driver analysis over time.</p>
-          <span class="acc-status">In development · Power BI</span>
-        </div>
-      </details>
-
-      <details class="acc-item">
-        <summary class="acc-header">
-          <div class="acc-icon thumb-coral"></div>
-          <span class="acc-title">Workforce Planning Model</span>
-          <div class="acc-tags"><span class="tag tag-purple">Excel</span><span class="tag tag-blue">Scenario Modelling</span><span class="tag tag-accent">Strategic HR</span></div>
-          <span class="acc-chevron"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg></span>
-        </summary>
-        <div class="acc-body">
-          <p>Headcount forecasting, skills gap mapping, and scenario modelling to support strategic workforce decisions across a 3-year horizon.</p>
-          <span class="acc-status">In development · Model</span>
-        </div>
-      </details>
-
     </div>
-    <!-- old projects-grid hidden -->
-    <div style="display:none"><div class="projects-grid">
-        <div class="project-thumb thumb-teal"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg><span class="wip-badge">Coming soon</span></div>
-        <div class="project-body"><div class="project-title">Workforce Attrition Dashboard</div><div class="project-desc">Predictive attrition model tracking flight risk by department, tenure band, and engagement score — built in Power BI.</div><div class="project-tags"><span class="tag tag-purple">Power BI</span><span class="tag tag-blue">HR Analytics</span><span class="tag tag-accent">Workforce Planning</span></div></div>
-        <div class="project-footer"><span>In development</span><span class="project-link">Power BI<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg></span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb thumb-blue"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg><span class="wip-badge">Coming soon</span></div>
-        <div class="project-body"><div class="project-title">Talent Acquisition Pipeline Tracker</div><div class="project-desc">End-to-end recruitment funnel metrics — time-to-hire, source effectiveness, offer acceptance rates, and diversity at each stage.</div><div class="project-tags"><span class="tag tag-purple">Power BI</span><span class="tag tag-blue">Recruitment</span><span class="tag tag-accent">DEI</span></div></div>
-        <div class="project-footer"><span>In development</span><span class="project-link">Power BI<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg></span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb thumb-purple"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21a48.309 48.309 0 0 1-8.135-.687c-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg><span class="wip-badge">Coming soon</span></div>
-        <div class="project-body"><div class="project-title">Psychometric Assessment Analytics</div><div class="project-desc">Aggregated insights from psychometric assessments — competency profiles, team composition analysis, and role-fit benchmarking.</div><div class="project-tags"><span class="tag tag-purple">Python</span><span class="tag tag-blue">Psychometrics</span><span class="tag tag-accent">Talent Advisory</span></div></div>
-        <div class="project-footer"><span>In development</span><span class="project-link">Report<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg></span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb thumb-amber"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z"/></svg><span class="wip-badge">Coming soon</span></div>
-        <div class="project-body"><div class="project-title">Employee Engagement Heatmap</div><div class="project-desc">Pulse survey results visualised as department and location heatmaps — tracking sentiment trends, eNPS, and driver analysis over time.</div><div class="project-tags"><span class="tag tag-purple">Power BI</span><span class="tag tag-blue">Engagement</span><span class="tag tag-accent">eNPS</span></div></div>
-        <div class="project-footer"><span>In development</span><span class="project-link">Power BI<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg></span></div>
-      </div>
-      <div class="project-card">
-        <div class="project-thumb thumb-coral"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"/></svg><span class="wip-badge">Coming soon</span></div>
-        <div class="project-body"><div class="project-title">Workforce Planning Model</div><div class="project-desc">Headcount forecasting, skills gap mapping, and scenario modelling to support strategic workforce decisions across a 3-year horizon.</div><div class="project-tags"><span class="tag tag-purple">Excel</span><span class="tag tag-blue">Scenario Modelling</span><span class="tag tag-accent">Strategic HR</span></div></div>
-        <div class="project-footer"><span>In development</span><span class="project-link">Model<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg></span></div>
-      </div>
-      <div class="project-card" style="border-style:dashed;cursor:default;opacity:0.55;">
-        <div class="project-thumb" style="background:var(--surface-2);"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" style="width:36px;height:36px;color:var(--text-3)"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></div>
-        <div class="project-body"><div class="project-title" style="color:var(--text-3)">More projects coming</div><div class="project-desc">Additional dashboards and analytics work in progress.</div></div>
-      </div>
-    </div></div>
   </section>
   <hr class="divider" />
   <section id="skills">
@@ -429,14 +320,7 @@
         <p>I build people analytics infrastructure, KPI dashboards, and automation tools that surface better talent decisions — and experiment with AI to turn repetitive HR processes into smart, scalable apps.</p>
         <p>My work spans psychometric assessment interpretation (SHL, Hogan, OPQ, Saville), executive search analytics, and building evidence-based hiring frameworks for Africa's leading organisations.</p>
         <p>This site is a living portfolio — dashboards and analytics projects across recruitment, retention, engagement, and talent development.</p>
-        <div class="about-chips">
-          <span class="about-chip">Power BI</span>
-          <span class="about-chip">Qlik Sense</span>
-          <span class="about-chip">Python</span>
-          <span class="about-chip">SQL</span>
-          <span class="about-chip">Notion Automation</span>
-          <span class="about-chip">Competency Frameworks</span>
-        </div>
+        <div class="about-chips"><span class="about-chip">Power BI</span><span class="about-chip">Qlik Sense</span><span class="about-chip">Python</span><span class="about-chip">SQL</span><span class="about-chip">Notion Automation</span><span class="about-chip">Competency Frameworks</span></div>
       </div>
       <div class="stat-stack">
         <div class="stat-item"><div class="stat-value">10+</div><div class="stat-label">Years in talent advisory &amp; consulting</div></div>
