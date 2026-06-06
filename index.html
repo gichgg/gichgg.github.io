@@ -29,28 +29,37 @@
 
   <style>
     :root {
-      --bg: #F8F8F6; --surface: #FFFFFF; --surface-2: #F2F1EE;
-      --border: rgba(0,0,0,0.09); --border-md: rgba(0,0,0,0.15);
-      --text: #1A1A18; --text-2: #5A5A56; --text-3: #909089;
-      --accent: #0F6E56; --accent-bg: #E1F5EE; --accent-text: #085041;
-      --tag-bg: #EEEDFE; --tag-text: #3C3489;
-      --tag2-bg: #E6F1FB; --tag2-text: #0C447C;
-      --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      /* FIX: Semi-transparent nav background makes backdrop-filter: blur() visible.
-         Original was fully opaque (#FFF), so the blur had no effect but still
-         cost GPU compositing. */
-      --nav-bg: rgba(248,248,246,0.92);
-      --radius: 12px; --radius-sm: 8px; --nav-h: 60px; --transition: 0.2s ease;
+      --bg: #F6F7F9; --surface: #FFFFFF; --surface-2: #F0F2F5;
+      --border: rgba(17,24,39,0.08); --border-md: rgba(17,24,39,0.14);
+      --text: #15171C; --text-2: #555E6D; --text-3: #8A93A2;
+      /* Primary CTA / accent — vibrant orange */
+      --accent: #F26419; --accent-hover: #DA560F; --accent-bg: #FFF0E6; --accent-text: #C2480C;
+      --accent-glow: rgba(242,100,25,0.28);
+      /* Secondary accent — crisp green, reserved for live / success / validation */
+      --green: #12A150; --green-bg: #E4F7EC; --green-text: #0A7A3D;
+      /* Neutral / cool tag tones */
+      --tag-bg: #EEF0F4; --tag-text: #475064;
+      --tag2-bg: #EAF1FB; --tag2-text: #2C5C9C;
+      --card-shadow: 0 1px 2px rgba(16,24,40,0.04), 0 6px 16px rgba(16,24,40,0.06);
+      --card-shadow-hover: 0 2px 6px rgba(16,24,40,0.06), 0 14px 30px rgba(16,24,40,0.12);
+      /* Charcoal nav — anchors the design in both themes */
+      --nav-bg: #1B1E25; --nav-border: rgba(255,255,255,0.07);
+      --nav-text: #C7CCD6; --nav-text-hover: #FFFFFF;
+      --radius: 12px; --radius-sm: 8px; --nav-h: 64px; --transition: 0.2s ease;
     }
     [data-theme="dark"] {
-      --bg: #141413; --surface: #1E1E1C; --surface-2: #252523;
-      --border: rgba(255,255,255,0.08); --border-md: rgba(255,255,255,0.14);
-      --text: #EEEEE8; --text-2: #A8A8A0; --text-3: #686860;
-      --accent: #1D9E75; --accent-bg: #04342C; --accent-text: #9FE1CB;
-      --tag-bg: #26215C; --tag-text: #CECBF6;
-      --tag2-bg: #042C53; --tag2-text: #B5D4F4;
-      --card-shadow: 0 1px 3px rgba(0,0,0,0.3);
-      --nav-bg: rgba(30,30,28,0.92);
+      --bg: #0F1115; --surface: #181B21; --surface-2: #21242B;
+      --border: rgba(255,255,255,0.08); --border-md: rgba(255,255,255,0.15);
+      --text: #ECEEF2; --text-2: #A3ABB8; --text-3: #6B7480;
+      --accent: #FF7A33; --accent-hover: #FF8C4D; --accent-bg: #3A1E0C; --accent-text: #FFB585;
+      --accent-glow: rgba(255,122,51,0.30);
+      --green: #25B96B; --green-bg: #0C3320; --green-text: #74E0A6;
+      --tag-bg: #23262D; --tag-text: #B7BECC;
+      --tag2-bg: #1A2A40; --tag2-text: #93BDF0;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      --card-shadow-hover: 0 10px 28px rgba(0,0,0,0.55);
+      --nav-bg: #131519; --nav-border: rgba(255,255,255,0.06);
+      --nav-text: #B7BECC; --nav-text-hover: #FFFFFF;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -63,19 +72,22 @@
     .skip-link { position: absolute; top: -40px; left: 1rem; background: var(--accent); color: #fff; padding: 8px 16px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 500; z-index: 200; transition: top 0.2s; }
     .skip-link:focus { top: 0.5rem; }
 
-    /* ── Nav ──
-       FIX: background uses --nav-bg (semi-transparent) so backdrop-filter
-       actually blurs content scrolling beneath it. Added -webkit- prefix for Safari. */
-    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: var(--nav-bg); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; z-index: 100; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: background var(--transition), border-color var(--transition); }
-    /* FIX: nav-logo is now an <a> so clicking the logo scrolls to top */
-    .nav-logo { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+    /* ── Nav — charcoal, anchors the design ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: var(--nav-bg); border-bottom: 1px solid var(--nav-border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; z-index: 100; box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 4px 20px rgba(0,0,0,0.18); transition: background var(--transition); }
+    .nav-logo { font-size: 15px; font-weight: 700; letter-spacing: 0.01em; color: #fff; }
     .nav-logo span { color: var(--accent); }
-    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
-    .nav-links a { font-size: 13.5px; color: var(--text-2); font-weight: 400; transition: color var(--transition); }
-    .nav-links a:hover { color: var(--text); }
-    .nav-right { display: flex; align-items: center; gap: 1rem; }
-    .theme-toggle { width: 36px; height: 36px; border-radius: var(--radius-sm); border: 1px solid var(--border-md); background: var(--surface-2); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background var(--transition), border-color var(--transition); color: var(--text-2); }
-    .theme-toggle:hover { background: var(--border); color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { position: relative; font-size: 13.5px; color: var(--nav-text); font-weight: 500; padding: 6px 0; transition: color var(--transition); }
+    .nav-links a:hover { color: var(--nav-text-hover); }
+    .nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform var(--transition); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--nav-text-hover); }
+    .nav-right { display: flex; align-items: center; gap: 0.85rem; }
+    .nav-cta { display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px; border-radius: var(--radius-sm); font-size: 13.5px; font-weight: 600; background: var(--accent); color: #fff; box-shadow: 0 2px 10px var(--accent-glow); transition: background var(--transition), transform var(--transition), box-shadow var(--transition); }
+    .nav-cta:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow); }
+    @media (max-width: 600px) { .nav-cta { padding: 8px 14px; } }
+    .theme-toggle { width: 36px; height: 36px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background var(--transition), color var(--transition); color: var(--nav-text); }
+    .theme-toggle:hover { background: rgba(255,255,255,0.14); color: #fff; }
     .theme-toggle svg { width: 16px; height: 16px; }
     .icon-sun { display: none; } .icon-moon { display: block; }
     [data-theme="dark"] .icon-sun { display: block; } [data-theme="dark"] .icon-moon { display: none; }
@@ -88,14 +100,14 @@
     .hero h1 em { font-style: normal; color: var(--accent); }
     .hero p { font-size: 16px; color: var(--text-2); max-width: 560px; line-height: 1.75; margin-bottom: 2rem; }
     .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 7px; padding: 10px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; cursor: pointer; transition: all var(--transition); border: 1px solid transparent; }
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { opacity: 0.88; }
-    .btn-secondary { background: var(--surface); color: var(--text); border-color: var(--border-md); }
-    .btn-secondary:hover { background: var(--surface-2); }
+    .btn { display: inline-flex; align-items: center; gap: 7px; padding: 12px 22px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; cursor: pointer; transition: background var(--transition), transform var(--transition), box-shadow var(--transition); border: 1px solid transparent; }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 2px 12px var(--accent-glow); }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
+    .btn-secondary { background: var(--surface); color: var(--text); border-color: var(--border-md); box-shadow: var(--card-shadow); }
+    .btn-secondary:hover { background: var(--surface-2); transform: translateY(-2px); box-shadow: var(--card-shadow-hover); }
 
     /* ── Layout ── */
-    section { padding: 4rem 2rem; max-width: 960px; margin: 0 auto; }
+    section { padding: 5.5rem 2rem; max-width: 960px; margin: 0 auto; }
     .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-3); margin-bottom: 0.4rem; }
     .section-title { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.75rem; }
     .section-desc { font-size: 15px; color: var(--text-2); max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem; }
@@ -103,8 +115,8 @@
 
     /* ── Projects grid ── */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
-    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition); display: flex; flex-direction: column; }
-    .project-card:hover { border-color: var(--border-md); box-shadow: var(--card-shadow); transform: translateY(-2px); }
+    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--card-shadow); transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition); display: flex; flex-direction: column; }
+    .project-card:hover { border-color: var(--border-md); box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
     .project-thumb { width: 100%; aspect-ratio: 16 / 9; background: var(--surface-2); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
     .thumb-teal   { background: linear-gradient(135deg, #085041 0%, #1D9E75 100%); }
     .thumb-blue   { background: linear-gradient(135deg, #042C53 0%, #378ADD 100%); }
@@ -127,13 +139,12 @@
     .tag-purple  { background: var(--tag-bg);    color: var(--tag-text); }
     .tag-blue    { background: var(--tag2-bg);   color: var(--tag2-text); }
     .tag-accent  { background: var(--accent-bg); color: var(--accent-text); }
-    /* FIX: was inline style repeated three times in the carousel */
     .tag-neutral { background: var(--surface-2); color: var(--text-2); }
 
     /* ── Skills grid ── */
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
-    .skill-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; transition: border-color var(--transition); }
-    .skill-block:hover { border-color: var(--border-md); }
+    .skill-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.4rem; box-shadow: var(--card-shadow); transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition); }
+    .skill-block:hover { border-color: var(--border-md); box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
     .skill-icon { width: 32px; height: 32px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
     .skill-name { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 0.25rem; }
     .skill-desc { font-size: 12.5px; color: var(--text-2); line-height: 1.55; }
@@ -146,18 +157,17 @@
     .about-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1.25rem; }
     .about-chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 500; padding: 4px 10px; border-radius: 20px; background: var(--surface-2); color: var(--text-2); border: 1px solid var(--border); }
     .stat-stack { display: flex; flex-direction: column; gap: 1rem; }
-    .stat-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
-    .stat-value { font-size: 1.75rem; font-weight: 600; letter-spacing: -0.03em; color: var(--text); line-height: 1; margin-bottom: 4px; }
+    .stat-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.4rem; box-shadow: var(--card-shadow); transition: box-shadow var(--transition), transform var(--transition); }
+    .stat-item:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-2px); }
+    .stat-value { font-size: 1.9rem; font-weight: 700; letter-spacing: -0.03em; color: var(--accent); line-height: 1; margin-bottom: 4px; }
     .stat-label { font-size: 12.5px; color: var(--text-2); }
 
-    /* ── GP Sections (Expertise + Workshop content) ──
-       FIX: These classes were used throughout the HTML but never defined.
-       The Expertise cards and entire Workshops section rendered as unstyled text. */
+    /* ── GP Sections (Expertise + Workshop content) ── */
     .gp-section { margin-top: 2.5rem; }
     .gp-h2 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 1rem; letter-spacing: -0.01em; }
     .gp-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
-    .gp-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; transition: border-color var(--transition); }
-    .gp-card:hover { border-color: var(--border-md); }
+    .gp-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.35rem 1.4rem; box-shadow: var(--card-shadow); transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition); }
+    .gp-card:hover { border-color: var(--border-md); box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
     .gp-card-icon { font-size: 1.35rem; margin-bottom: 0.5rem; }
     .gp-card h3 { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; line-height: 1.3; }
     .gp-card p { font-size: 12.5px; color: var(--text-2); line-height: 1.6; }
@@ -169,15 +179,15 @@
     .gp-audience-item small { display: block; font-size: 12px; font-weight: 400; color: var(--text-2); margin-top: 4px; line-height: 1.5; }
     .gp-outcomes { display: flex; flex-direction: column; gap: 0.75rem; }
     .gp-outcome { display: flex; align-items: flex-start; gap: 0.75rem; }
-    .gp-check { width: 20px; height: 20px; border-radius: 50%; background: var(--accent-bg); color: var(--accent-text); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .gp-check { width: 20px; height: 20px; border-radius: 50%; background: var(--green-bg); color: var(--green-text); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
     .gp-outcome p { font-size: 13.5px; color: var(--text-2); line-height: 1.65; }
-    .gp-cta { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; }
+    .gp-cta { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.25rem; box-shadow: var(--card-shadow); }
     .gp-cta p { font-size: 14px; color: var(--text-2); line-height: 1.65; margin: 0.5rem 0 1.5rem; }
-    .gp-btn { display: inline-flex; align-items: center; gap: 7px; padding: 10px 20px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 500; background: var(--accent); color: #fff; transition: opacity var(--transition); }
-    .gp-btn:hover { opacity: 0.88; }
+    .gp-btn { display: inline-flex; align-items: center; gap: 7px; padding: 12px 22px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; background: var(--accent); color: #fff; box-shadow: 0 2px 12px var(--accent-glow); transition: background var(--transition), transform var(--transition), box-shadow var(--transition); }
+    .gp-btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); }
 
     /* ── Contact ── */
-    .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; display: flex; align-items: flex-start; gap: 2.5rem; flex-wrap: wrap; }
+    .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.75rem; display: flex; align-items: flex-start; gap: 2.5rem; flex-wrap: wrap; box-shadow: var(--card-shadow); }
     .contact-left { flex: 1; min-width: 220px; }
     .contact-left h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.5rem; }
     .contact-left p { font-size: 14px; color: var(--text-2); line-height: 1.65; }
@@ -205,12 +215,13 @@
     .carousel-wrap { position: relative; margin-bottom: 2.5rem; }
     .carousel-track-outer { overflow: hidden; border-radius: var(--radius); }
     .carousel-track { display: flex; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
-    .carousel-slide { min-width: 100%; display: grid; grid-template-columns: 1fr 1fr; min-height: 260px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .carousel-slide { min-width: 100%; display: grid; grid-template-columns: 1fr 1fr; min-height: 260px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--card-shadow); }
     @media (max-width: 640px) { .carousel-slide { grid-template-columns: 1fr; min-height: auto; } }
     .carousel-body { padding: 2rem; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; }
-    /* FIX: Replaced repeated inline <span> dots with a CSS pseudo-element */
-    .carousel-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--accent); background: var(--accent-bg); padding: 4px 10px; border-radius: 20px; width: fit-content; }
-    .carousel-eyebrow::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); display: inline-block; flex-shrink: 0; }
+    .carousel-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--green-text); background: var(--green-bg); padding: 4px 10px; border-radius: 20px; width: fit-content; }
+    .carousel-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; flex-shrink: 0; box-shadow: 0 0 0 0 var(--green); animation: livePulse 2s infinite; }
+    @keyframes livePulse { 0% { box-shadow: 0 0 0 0 rgba(18,161,80,0.5); } 70% { box-shadow: 0 0 0 6px rgba(18,161,80,0); } 100% { box-shadow: 0 0 0 0 rgba(18,161,80,0); } }
+    @media (prefers-reduced-motion: reduce) { .carousel-eyebrow::before { animation: none; } }
     .carousel-title { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); line-height: 1.25; margin: 0.5rem 0 0.4rem; }
     .carousel-desc { font-size: 13.5px; color: var(--text-2); line-height: 1.65; flex: 1; }
     .carousel-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
@@ -233,8 +244,8 @@
     /* ── Accordion ── */
     .dev-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-3); margin-bottom: 1rem; margin-top: 0.25rem; }
     .accordion { display: flex; flex-direction: column; gap: 6px; }
-    .acc-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color var(--transition); }
-    .acc-item[open] { border-color: var(--border-md); }
+    .acc-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--card-shadow); transition: border-color var(--transition), box-shadow var(--transition); }
+    .acc-item[open] { border-color: var(--border-md); box-shadow: var(--card-shadow-hover); }
     .acc-header { display: flex; align-items: center; gap: 12px; padding: 0.9rem 1.25rem; cursor: pointer; list-style: none; user-select: none; }
     .acc-header::-webkit-details-marker { display: none; }
     summary::-webkit-details-marker { display: none; }
@@ -254,10 +265,7 @@
   <!-- FIX: Skip link added for keyboard/screen reader accessibility -->
   <a href="#main-content" class="skip-link">Skip to content</a>
 
-  <!-- FIX: Original nav was closed with </section> instead of </nav>, breaking
-       the entire document tree. Hero and all sections were structurally misplaced. -->
   <nav aria-label="Main navigation">
-    <!-- FIX: Logo is now an <a> — clicking it scrolls to top. Was a <div>. -->
     <a href="#" class="nav-logo">GICHEHA<span>GITAU</span></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -271,10 +279,10 @@
         <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25M12 18.75V21m8.25-9H18.75M5.25 12H3m15.364-6.364-1.591 1.591M6.227 17.773l-1.59 1.59M18.364 18.364l-1.591-1.591M6.227 6.227 4.636 4.636M12 8.25a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5z"/></svg>
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998z"/></svg>
       </button>
+      <a href="#contact" class="nav-cta">Get in touch</a>
     </div>
   </nav>
 
-  <!-- FIX: <main> wraps all page content for landmark navigation / screen readers -->
   <main id="main-content">
 
     <div class="hero">
@@ -296,9 +304,6 @@
       <div class="section-label">About</div>
       <h2 class="section-title">Gicheha Gitau</h2>
 
-      <!-- FIX: about-grid now contains exactly two children (about-text + stat-stack).
-           Original had the gp-section Expertise block sitting between them as a
-           third grid item, which displaced stat-stack to a second row. -->
       <div class="about-grid">
         <div class="about-text">
           <p>Talent advisor by day, AI tinkerer by night. I'm Gich Gitau (GG). A consultant in Talent &amp; Analytics based in Nairobi, specialising in people analytics, executive recruitment, and talent advisory.</p>
@@ -321,7 +326,6 @@
         </div>
       </div>
 
-      <!-- Expertise cards — full-width below the two-column grid -->
       <div class="gp-section">
         <p class="gp-h2">Areas of Expertise</p>
         <div class="gp-cards">
@@ -349,7 +353,6 @@
             <div class="carousel-slide">
               <div class="carousel-body">
                 <div>
-                  <!-- FIX: Removed inline <span> dots — now handled by .carousel-eyebrow::before in CSS -->
                   <div class="carousel-eyebrow">Live · Talent Advisory</div>
                   <div class="carousel-title">Talent Report — Hogan Alignment</div>
                   <div class="carousel-desc">Aligns Hogan assessment reports to a job description to generate customised insights and clear, actionable recommendations. Built with TypeScript and Gemini AI.</div>
@@ -505,9 +508,6 @@
 
     <hr class="divider" />
 
-    <!-- FIX: ID was "Workshops" (capital W) — lowercased to match convention.
-         Nav link updated to match. about-grid with one child removed; content
-         flows naturally without the spurious two-column wrapper. -->
     <section id="workshops">
       <div class="section-label">Capacity Building</div>
       <h2 class="section-title">Workshop Facilitation</h2>
@@ -618,7 +618,7 @@
       const dots     = document.querySelectorAll('.carousel-dot');
       const prevBtn  = document.getElementById('carouselPrev');
       const nextBtn  = document.getElementById('carouselNext');
-      const total    = dots.length; // derived from DOM, not hardcoded
+      const total    = dots.length;
       let current    = 0;
 
       function go(n) {
@@ -642,8 +642,7 @@
       });
     })();
 
-    // Theme toggle — also wrapped in IIFE
-    // FIX: Theme init moved to <head>; this handler only responds to clicks.
+    // Theme toggle
     (function() {
       const toggle = document.getElementById('themeToggle');
       const html   = document.documentElement;
@@ -652,6 +651,27 @@
         html.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
       });
+    })();
+
+    // Scroll-spy — highlights the current section's nav link with the orange underline
+    (function() {
+      const links = Array.from(document.querySelectorAll('.nav-links a'));
+      const map = new Map();
+      links.forEach(a => {
+        const id = a.getAttribute('href').slice(1);
+        const sec = document.getElementById(id);
+        if (sec) map.set(sec, a);
+      });
+      if (!map.size || !('IntersectionObserver' in window)) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            links.forEach(l => l.classList.remove('active'));
+            map.get(e.target).classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      map.forEach((_, sec) => obs.observe(sec));
     })();
   </script>
 </body>
