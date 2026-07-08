@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Gicheha People Analytics</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme', stored === 'dark' ? 'dark' : 'light');
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <a class="brand" href="index.html"><span class="brand-primary">People</span><span class="brand-accent">Analytics</span></a>
+        <nav aria-label="Primary navigation">
+          <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li>
+              <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+              </button>
+            </li>
+            <li><a class="button primary nav-cta" href="index.html#contact">Get in touch</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Portfolio</p>
+            <h1>A snapshot of recent work across analytics, reporting, and talent operations.</h1>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <p class="pill">Live</p>
+              <h2>Talent Report – Hogan alignment</h2>
+              <p>Interactive reporting that helps teams interpret assessment outputs for hiring and development.</p>
+              <p class="tag-list"><span>Reporting</span><span>Hogan</span><span>People analytics</span></p>
+              <a href="https://github.com/gichgg" target="_blank" rel="noopener">Open project</a>
+            </article>
+            <article class="card">
+              <p class="pill">Live</p>
+              <h2>FinSight AI</h2>
+              <p>Data-led analysis experience designed to make financial and operational narratives easier to scan.</p>
+              <p class="tag-list"><span>AI</span><span>Dashboards</span><span>Insight design</span></p>
+              <a href="https://github.com/gichgg" target="_blank" rel="noopener">Open project</a>
+            </article>
+            <article class="card">
+              <p class="pill">Live</p>
+              <h2>ETR Receipt</h2>
+              <p>Operational workflow support with a focus on clarity, traceability, and simpler review.</p>
+              <p class="tag-list"><span>Operations</span><span>Workflow</span><span>UX</span></p>
+              <a href="https://github.com/gichgg" target="_blank" rel="noopener">Open project</a>
+            </article>
+            <article class="card">
+              <p class="pill dev">In development</p>
+              <h2>Power BI workforce dashboard</h2>
+              <p>People metrics dashboard concept for leadership review and employee lifecycle reporting.</p>
+              <p class="tag-list"><span>Power BI</span><span>HR analytics</span></p>
+              <span class="muted-link">Available on request</span>
+            </article>
+            <article class="card">
+              <p class="pill dev">In development</p>
+              <h2>Python attrition analysis</h2>
+              <p>Analytical workflow for surfacing themes in retention, mobility, and organisational risk.</p>
+              <p class="tag-list"><span>Python</span><span>Data analysis</span></p>
+              <span class="muted-link">Available on request</span>
+            </article>
+            <article class="card">
+              <p class="pill dev">In development</p>
+              <h2>Excel leadership scorecard</h2>
+              <p>Structured scorecard approach for tracking leadership capability and development actions.</p>
+              <p class="tag-list"><span>Excel</span><span>Scorecards</span></p>
+              <span class="muted-link">Available on request</span>
+            </article>
+            <article class="card">
+              <p class="pill dev">In development</p>
+              <h2>Assessment interview workbook</h2>
+              <p>Practical workbook for blending interview notes, competency markers, and decision support.</p>
+              <p class="tag-list"><span>Recruitment</span><span>Assessment</span></p>
+              <span class="muted-link">Available on request</span>
+            </article>
+            <article class="card">
+              <p class="pill dev">In development</p>
+              <h2>People analytics playbook</h2>
+              <p>Reference framework for designing a simple and sustainable analytics cadence for HR teams.</p>
+              <p class="tag-list"><span>Strategy</span><span>Ops</span></p>
+              <span class="muted-link">Available on request</span>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-layout">
+        <div>
+          <a class="brand" href="index.html">GG People Analytics</a>
+          <p>Helping people teams make evidence-led people decisions.</p>
+        </div>
+        <div>
+          <a href="mailto:gicheha.gitau@gmail.com">Email</a>
+          <a href="https://github.com/gichgg" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/gichehagitau" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>
