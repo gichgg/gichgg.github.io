@@ -1,380 +1,178 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-:root {
-  color-scheme: light;
-  --bg: #f8fafc;
-  --surface: #ffffff;
-  --surface-strong: #f1f5f9;
-  --text: #111827;
-  --muted: #475569;
-  --accent: #f97316;
-  --accent-strong: #ea580c;
-  --border: rgba(148, 163, 184, 0.35);
-  --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
-  --header-bg: #12141f;
-  --header-border: rgba(255, 255, 255, 0.08);
-  --header-text: #f8fafc;
-  --header-muted: #98a2b8;
-}
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --bg: #0b0d14;
-  --surface: #141824;
-  --surface-strong: #1b202e;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-  --border: rgba(148, 163, 184, 0.18);
-  --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-}
-* {
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
-body {
-  margin: 0;
-  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-a:hover,
-a:focus-visible {
-  color: var(--accent-strong);
-}
-img {
-  max-width: 100%;
-  display: block;
-}
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: 0;
-  background: var(--accent);
-  color: var(--bg);
-  padding: 0.75rem 1rem;
-  z-index: 100;
-}
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-}
-.container {
-  width: min(1120px, calc(100% - 2rem));
-  margin: 0 auto;
-}
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--header-border);
-}
-.nav-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-  gap: 1rem;
-}
-.brand {
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  color: var(--text);
-}
-.site-header .brand {
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  font-size: 1.05rem;
-}
-.brand-primary {
-  color: var(--header-text);
-}
-.brand-accent {
-  color: var(--accent);
-}
-.nav-list {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
-.nav-list a {
-  color: var(--header-muted);
-}
-.nav-list a:hover,
-.nav-list a:focus-visible,
-.nav-list a[aria-current="page"] {
-  color: var(--header-text);
-}
-.nav-list a[aria-current="page"] {
-  position: relative;
-}
-.nav-list a[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -6px;
-  height: 2px;
-  background: var(--accent);
-}
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.35rem;
-  height: 2.35rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--header-border);
-  color: var(--header-text);
-  cursor: pointer;
-}
-.theme-toggle:hover,
-.theme-toggle:focus-visible {
-  background: rgba(255, 255, 255, 0.12);
-}
-.theme-toggle svg {
-  width: 1.1rem;
-  height: 1.1rem;
-}
-.theme-toggle .icon-sun {
-  display: none;
-}
-:root[data-theme="dark"] .theme-toggle .icon-moon {
-  display: none;
-}
-:root[data-theme="dark"] .theme-toggle .icon-sun {
-  display: block;
-}
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  padding: 0.8rem 1.15rem;
-  font-weight: 600;
-  transition: transform 180ms ease, background 180ms ease;
-}
-.button:hover,
-.button:focus-visible {
-  transform: translateY(-1px);
-}
-.button.primary {
-  background: var(--accent);
-  color: var(--bg);
-}
-.button.primary:hover,
-.button.primary:focus-visible {
-  background: var(--accent-strong);
-  color: var(--bg);
-}
-.button.secondary {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-.nav-cta {
-  margin-left: 0.3rem;
-}
-.hero {
-  padding: 4.5rem 0 3rem;
-}
-.hero-grid,
-.footer-layout {
-  display: grid;
-  gap: 2rem;
-}
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--accent);
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin: 0 0 0.65rem;
-}
-h1,
-h2,
-h3 {
-  line-height: 1.15;
-  margin-top: 0;
-}
-h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 1rem;
-}
-h2 {
-  font-size: clamp(1.5rem, 3.4vw, 2.2rem);
-  margin-bottom: 0.7rem;
-}
-.hero-copy,
-.section-heading p,
-.card p,
-.contact-detail {
-  color: var(--muted);
-  max-width: 64ch;
-}
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-  margin: 1.5rem 0 1.8rem;
-}
-.stats {
-  display: grid;
-  gap: 1rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.stats li {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  padding: 1rem;
-}
-.stats strong {
-  display: block;
-  font-size: 1.05rem;
-  margin-bottom: 0.25rem;
-}
-.stats span {
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-.hero-art {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.hero-art img {
-  width: min(100%, 420px);
-  border-radius: 1.25rem;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  background: #ffffff;
-}
-.section {
-  padding: 3rem 0;
-}
-.about-grid {
-  display: grid;
-  gap: 2rem;
-  align-items: start;
-}
-.about-photo img {
-  width: min(100%, 320px);
-  height: auto;
-  border-radius: 1.25rem;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  object-fit: cover;
-  object-position: center 20%;
-  aspect-ratio: 3 / 4;
-  margin: 0 auto;
-}
-.section-heading {
-  margin-bottom: 1.7rem;
-}
-.card-grid {
-  display: grid;
-  gap: 1rem;
-}
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 1.1rem;
-  padding: 1.2rem;
-  box-shadow: var(--shadow);
-}
-.card ul {
-  padding-left: 1rem;
-  color: var(--muted);
-}
-.card a {
-  display: inline-block;
-  margin-top: 0.8rem;
-  font-weight: 600;
-}
-.pill {
-  display: inline-block;
-  margin-bottom: 0.7rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 999px;
-  background: rgba(249, 115, 22, 0.15);
-  color: var(--accent);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-}
-.pill.dev {
-  background: rgba(249, 115, 22, 0.15);
-  color: var(--accent);
-}
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin: 0.8rem 0;
-}
-.tag-list span {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 999px;
-  padding: 0.3rem 0.6rem;
-  color: var(--muted);
-  font-size: 0.84rem;
-}
-.muted-link {
-  color: var(--muted);
-}
-.contact-content {
-  max-width: 64ch;
-}
-.site-footer {
-  padding: 2rem 0 3rem;
-  border-top: 1px solid var(--border);
-}
-.footer-layout {
-  gap: 1rem;
-}
-.footer-layout a {
-  display: inline-block;
-  margin-right: 1rem;
-  color: var(--muted);
-}
-@media (min-width: 768px) {
-  .hero-grid,
-  .footer-layout {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: center;
-  }
-  .about-grid {
-    grid-template-columns: 280px 1fr;
-  }
-  .card-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .stats {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-@media (min-width: 1100px) {
-  .card-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Deliberately not indexed. Credibility page sent to people, not a shopfront to be found. -->
+<meta name="robots" content="noindex, nofollow" />
+<title>Gich Gitau — AI &amp; analytics tooling for HR</title>
+<meta name="description" content="I build AI and analytics tooling that automates HR's manual work — assessment reporting, dashboards, and hiring workflows." />
+<link rel="stylesheet" href="css/style.css" />
+<script src="js/main.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container nav-bar">
+    <a class="brand" href="index.html"><span class="brand-primary">Gich</span><span class="brand-accent">.</span><span class="brand-primary">io</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="services.html">How I work</a></li>
+        <li><a href="portfolio.html">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25M12 18.75V21m8.25-9H18.75M5.25 12H3m15.364-6.364-1.591 1.591M6.227 17.773l-1.59 1.59M18.364 18.364l-1.591-1.591M6.227 6.227 4.636 4.636M12 8.25a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5z"/></svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998z"/></svg>
+          </button>
+        </li>
+        <li class="nav-cta"><a class="button primary" href="#contact">Get in touch</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">AI &amp; automation for people teams</p>
+        <h1>I automate the manual work that eats your HR team's week.</h1>
+        <p class="hero-copy">
+          Assessment reports typed by hand. Dashboards rebuilt every month. Hiring workflows held
+          together by spreadsheets and follow-up emails. I build the tooling that does that work
+          automatically — scoped as a fixed-fee project, with a defined output and a date.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#contact">Book a scoping call</a>
+        </div>
+        <ul class="stats">
+          <li><strong>10+ years</strong><span>In psychometrics, executive search and people analytics</span></li>
+          <li><strong>Fixed fee</strong><span>Priced against the process, never against my hours</span></li>
+          <li><strong>One at a time</strong><span>So the project I'm on gets done properly</span></li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <img src="assets/hero-illustration.svg" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="problem">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">The problem I solve</p>
+        <h2>Most HR teams don't need more data. They need to stop producing it by hand.</h2>
+        <p>
+          If a capable person is copying numbers between systems to produce something, that
+          something can almost certainly be generated instead.
+        </p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <span class="pill">Reporting</span>
+          <h3>Reporting that rebuilds itself</h3>
+          <p>
+            The monthly pack, the assessment write-up, the board slide. Generated from the source
+            data on a schedule, formatted the way you already present it, with no one retyping
+            anything.
+          </p>
+        </article>
+        <article class="card">
+          <span class="pill">Dashboards</span>
+          <h3>Dashboards people actually open</h3>
+          <p>
+            Headcount, attrition, pipeline, time-to-hire — pulled from where the data already
+            lives, refreshed without anyone touching it, and built around the decision rather than
+            the metric.
+          </p>
+        </article>
+        <article class="card">
+          <span class="pill">Workflow</span>
+          <h3>Workflows with the friction removed</h3>
+          <p>
+            Screening, scheduling, structured notes, candidate summaries. The repetitive middle of
+            a hiring process automated to the point where your team only handles the judgement
+            calls.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Background</p>
+        <h2>Who you'd be working with</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="assets/gich-gitau.jpg" alt="Portrait of Gicheha Gitau" />
+        </div>
+        <div>
+          <p class="hero-copy">
+            I'm Gich Gitau — a talent and analytics consultant based in Nairobi, and an
+            International Affiliate of the APA.
+          </p>
+          <p class="hero-copy">
+            I've spent a decade inside psychometric assessment, executive search and people
+            analytics, which means I've spent a decade watching capable teams lose days a month to
+            work a machine should be doing. That's the gap I build into.
+          </p>
+          <p class="hero-copy">
+            My advantage isn't that I write software. It's that I understand the HR process well
+            enough to know which parts are worth automating, which parts genuinely need a human,
+            and where an automated shortcut would quietly damage the quality of a decision.
+          </p>
+          <p class="hero-copy">
+            I take one project at a time, on my own hours, at a fixed price agreed before I start.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Contact</p>
+        <h2>Tell me which process is costing you the most time.</h2>
+      </div>
+      <div class="card contact-content">
+        <p class="contact-detail">
+          The first conversation is a scoping call, not a pitch. I'll want to understand the
+          process, who touches it, and how many hours it currently takes. If it isn't worth
+          automating, I'll say so — and no pricing gets discussed that early.
+        </p>
+        <p class="contact-detail">
+          Email: <a href="mailto:gicheha.gitau@gmail.com">gicheha.gitau@gmail.com</a>
+        </p>
+        <p class="contact-detail">
+          Book time: <a href="https://calendar.app.google/Mo9pZjkZ5yw6sfVb6">Schedule a scoping call</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-layout">
+    <div>
+      <p class="brand">Gich<span class="brand-accent">.</span>io</p>
+      <p class="contact-detail">AI &amp; analytics tooling for HR teams. Nairobi.</p>
+    </div>
+    <div>
+      <a class="muted-link" href="mailto:gicheha.gitau@gmail.com">Email</a>
+      <a class="muted-link" href="https://github.com/gichgg">GitHub</a>
+      <a class="muted-link" href="https://www.linkedin.com/in/gichehagitau">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
